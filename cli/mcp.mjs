@@ -6,7 +6,7 @@ import path from 'node:path';
 import {normalizeConfig,defaultConfig} from '../core/config.mjs';
 import {writePresentation} from './files.mjs';
 const server=new McpServer({name:'palette-ppt',version:'1.0.0'});
-const schema=z.object({version:z.literal(1).optional(),name:z.string().min(1).max(50).optional(),colors:z.object({background:z.string().regex(/^#[0-9a-f]{6}$/i),accent:z.string().regex(/^#[0-9a-f]{6}$/i),text:z.string().regex(/^#[0-9a-f]{6}$/i)}).strict(),title:z.string().max(40).optional(),subtitle:z.string().max(60).optional(),style:z.enum(['minimal','bold','editorial']).optional()}).strict();
+const schema=z.object({version:z.literal(1).optional(),name:z.string().min(1).max(50).optional(),colors:z.object({background:z.string().regex(/^#[0-9a-f]{6}$/i),accent:z.string().regex(/^#[0-9a-f]{6}$/i),text:z.string().regex(/^#[0-9a-f]{6}$/i)}).strict(),title:z.string().max(40).optional(),subtitle:z.string().max(60).optional(),style:z.enum(['minimal','bold','editorial','bento']).optional()}).strict();
 const result=value=>({content:[{type:'text',text:JSON.stringify(value)}]});
 server.registerTool('get_palette_example',{description:'返回可导入网页或生成 PPT 的 JSON 配置示例。',inputSchema:{},annotations:{readOnlyHint:true}},async()=>result(defaultConfig));
 server.registerTool('validate_palette',{description:'验证配色 JSON，不写入文件。',inputSchema:{config:schema},annotations:{readOnlyHint:true}},async({config})=>result(normalizeConfig(config)));

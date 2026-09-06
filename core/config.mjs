@@ -1,4 +1,4 @@
-export const slideStyles=['minimal','bold','editorial'];
+export const slideStyles=['minimal','bold','editorial','bento'];
 export const defaultConfig={version:1,name:'自定义蓝',style:'minimal',colors:{background:'#142C48',accent:'#A8D8F0',text:'#FFFFFF'},title:'让想法，\n有自己的色彩。',subtitle:'2026 品牌策略与创意提案'};
 const obj=v=>v!==null&&typeof v==='object'&&!Array.isArray(v);
 export function normalizeConfig(input){

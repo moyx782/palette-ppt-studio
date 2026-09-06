@@ -7,7 +7,7 @@ description: 从配色 JSON 生成五页可编辑 PPT 模板，可选极简留�
 
 - 先运行 `node <技能目录>/scripts/palette-ppt.mjs example` 获取当前 JSON 格式。
 - 配置包含 version: 1、name、colors.background / accent / text（均为 #RRGGBB），以及可选 title（40 字符以内）、subtitle（60 字符以内）。用户未提供文案时可使用默认文案，并说明使用了模板示例。
-- 可选 style 字段选择基础排版模板：`minimal`（极简留白，默认）、`bold`（大胆撞色：大色块、超大章节号、色带页脚）、`editorial`（编辑杂志：衬线标题、非对称构图、细分隔线）。用户提到「模板」「排版」「风格」时主动询问或按其描述选择；未指定时使用 minimal。
+- 可选 style 字段选择基础排版模板：`minimal`（极简留白，默认）、`bold`（大胆撞色：大色块、超大章节号、色带页脚）、`editorial`（编辑杂志：衬线标题、非对称构图、细分隔线）、`bento`（网格分割：细线网格、边框单元格、主模块更大的非对称网格）。用户提到「模板」「排版」「风格」时主动询问或按其描述选择；未指定时使用 minimal。
 - 将用户指定配色写入 JSON，执行 `validate --config <JSON绝对路径>`。
 - 执行 `generate --config <JSON绝对路径> --output <PPTX绝对路径>`，返回实际生成文件的链接。已有文件默认不覆盖；只有用户已要求覆盖时才使用 --force。
 - 当前输出固定五页：封面、章节、内容、数据、结束页，五页共用所选 style 的版式语言。数据页为示例数据，不将其描述为用户的真实业务数据。网页预览和 PPT 字体、装饰图形可能略有差异。

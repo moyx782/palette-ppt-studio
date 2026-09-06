@@ -7,7 +7,7 @@
 需要 Node.js 22.13+，首次在项目目录运行 `npm install`。
 
 ```bash
-cd palette-studio
+cd palette-ppt-studio
 node cli/palette-ppt.mjs example > palette.json
 node cli/palette-ppt.mjs validate --config palette.json
 node cli/palette-ppt.mjs generate --config palette.json --output my-template.pptx
@@ -77,3 +77,13 @@ node /absolute/path/to/palette-studio/cli/palette-ppt.mjs install-skill
 `npm run dev` 启动网页；`npm run build` 构建；`npx tsc --noEmit` 类型检查；`node tests/integrations.mjs` 验证 CLI/MCP/技能、错误路径和 PPTX 内容。测试只写入临时目录。
 
 未进行浏览器交互自动化与 PowerPoint 渲染比对。页面附带的实验性 WebMCP 配色接口因当前没有验证上下文而未验证；独立 stdio MCP 已通过真实客户端集成测试。
+
+## GitHub Pages 与自动发布
+
+在线地址：https://moyx782.github.io/palette-ppt-studio/
+
+工作流 `.github/workflows/pages.yml` 在 main 推送时运行依赖安装、类型检查、CLI/MCP/技能集成测试、静态构建，然后部署到 GitHub Pages。拉取请求只检查和构建，不部署；也可从 Actions 手动运行。工作流使用仓库内置 GITHUB_TOKEN，不需要添加额外密钥。
+
+本地静态构建：`npm run build:pages`，输出到 dist-pages。`npm run preview:pages` 预览构建结果。默认路径为 /palette-ppt-studio/，使用环境变量 PAGES_BASE_PATH 可覆盖。Fork 到新仓库时，在仓库 Settings → Pages 中将 Source 设为 GitHub Actions，推送到 main 即可；CI 自动使用仓库名作为子路径。
+
+GitHub Pages 托管的是浏览器应用。配色导入与 PPT 导出在浏览器执行；CLI 和 stdio MCP 需下载后在本机运行。

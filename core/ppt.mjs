@@ -1,0 +1,11 @@
+import PptxGenJS from 'pptxgenjs';
+import {normalizeConfig} from './config.mjs';
+export function createPresentation(input){const config=normalizeConfig(input);const colors={bg:config.colors.background,accent:config.colors.accent,text:config.colors.text},title=config.title,subtitle=config.subtitle;const pptx=new PptxGenJS();pptx.layout='LAYOUT_WIDE';pptx.author='色页';pptx.subject='可编辑的配色演示模板';pptx.title=title.replace(/\n/g,'');pptx.theme={headFontFace:'Microsoft YaHei',bodyFontFace:'Microsoft YaHei'};const bg=colors.bg.slice(1),ac=colors.accent.slice(1),tx=colors.text.slice(1);
+ for(let i=0;i<5;i++){const s=pptx.addSlide();s.background={color:bg};s.addText('STUDIO / PRESENTATION',{x:.7,y:.45,w:6,h:.3,fontSize:11,color:tx,charSpacing:2});s.addText(String(i+1).padStart(2,'0')+' / 05',{x:11.2,y:6.9,w:1.4,h:.2,fontSize:10,color:tx});s.addShape(pptx.ShapeType.line,{x:.7,y:6.7,w:11.9,h:0,line:{color:tx,transparency:65,width:.5}});
+ if(i===0||i===4){s.addShape(pptx.ShapeType.arc,{x:8,y:1.25,w:4.5,h:4.5,rotate:25,line:{color:ac,width:32},fill:{color:bg,transparency:100}});s.addText(i===0?title:'谢谢观看。',{x:.8,y:2,w:8,h:2.1,fontSize:44,bold:true,color:tx,breakLine:false});s.addText(i===0?subtitle:'让下一次表达，从好配色开始。',{x:.8,y:4.5,w:8,h:.6,fontSize:17,color:ac});}
+ if(i===1){s.addText('01',{x:.8,y:1.6,w:3,h:1.3,fontSize:86,color:ac});s.addText('从一个好想法开始',{x:.8,y:3.3,w:11,h:1,fontSize:38,bold:true,color:tx});s.addText('背景洞察 / 目标方向 / 创意策略',{x:.8,y:4.7,w:10,h:.5,fontSize:18,color:ac});}
+ if(i===2){s.addText('把想法变成清晰的表达',{x:.8,y:1.25,w:11,h:.8,fontSize:32,bold:true,color:tx});['洞察需求','建立连接','创造价值'].forEach((t,j)=>{s.addText('0'+(j+1),{x:.8+j*4.1,y:2.8,w:3.5,h:.7,fontSize:30,color:ac});s.addText(t,{x:.8+j*4.1,y:3.7,w:3.5,h:.6,fontSize:24,bold:true,color:tx});s.addText('在这里添加你的核心观点，\n让内容与视觉共同传递价值。',{x:.8+j*4.1,y:4.6,w:3.5,h:1,fontSize:15,color:tx});});}
+ if(i===3){s.addText('每一次进步，都值得看见',{x:.8,y:1.2,w:11,h:.8,fontSize:32,bold:true,color:tx});[42,65,58,86].forEach((v,j)=>{s.addShape(pptx.ShapeType.rect,{x:1+j*2.9,y:5.8-v/28,w:1.65,h:v/28,line:{color:ac,transparency:100},fill:{color:ac,transparency:j===3?0:40}});s.addText(v+'%',{x:1+j*2.9,y:5.1-v/28,w:2,h:.5,fontSize:23,color:tx});s.addText('Q'+(j+1),{x:1+j*2.9,y:6,w:2,h:.4,fontSize:14,color:tx});});}}
+
+return pptx;
+}

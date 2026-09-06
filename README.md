@@ -87,3 +87,7 @@ node /absolute/path/to/palette-studio/cli/palette-ppt.mjs install-skill
 本地静态构建：`npm run build:pages`，输出到 dist-pages。`npm run preview:pages` 预览构建结果。默认路径为 /palette-ppt-studio/，使用环境变量 PAGES_BASE_PATH 可覆盖。Fork 到新仓库时，在仓库 Settings → Pages 中将 Source 设为 GitHub Actions，推送到 main 即可；CI 自动使用仓库名作为子路径。
 
 GitHub Pages 托管的是浏览器应用。配色导入与 PPT 导出在浏览器执行；CLI 和 stdio MCP 需下载后在本机运行。
+
+## 新增主题配色
+
+先调整背景色、强调色和文字色（也可导入 JSON），点击「新增主题配色」，输入名称后保存。新主题会加入主题列表并立即应用。空名称和重名会提示错误。自定义主题保存在当前浏览器的 localStorage 中，刷新后仍可切换；不同设备或域名之间需使用 JSON 导出、导入，再保存为主题。浏览器禁用存储时会提示仅本次有效。

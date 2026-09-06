@@ -1,6 +1,7 @@
 {
   "version": 1,
   "name": "自定义蓝",
+  "style": "minimal",
   "colors": {
     "background": "#142C48",
     "accent": "#A8D8F0",

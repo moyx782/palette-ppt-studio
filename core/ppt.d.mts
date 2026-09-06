@@ -1,2 +1,3 @@
 import type PptxGenJS from 'pptxgenjs';
-export function createPresentation(input:unknown):PptxGenJS;
+export const slideStyles:readonly string[];
+export function createPresentation(input:unknown,style?:string):PptxGenJS;

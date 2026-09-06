@@ -21,7 +21,7 @@
 .style-sample-editorial b:last-child{left:22%;top:30%;width:44%;height:8%;background:#315ee9;border-radius:1px;opacity:.8}
 
 /* 大胆撞色 */
-.style-bold .rings{transform:none;right:-13%;top:-6%;width:54%;height:108%}
+.style-bold .rings{transform:none;right:-9%;top:16%;width:46%;height:80%}
 .style-bold .rings b{border:0;background:var(--ink);opacity:.9;border-radius:26%}
 .style-bold .rings b:nth-child(2){opacity:.4}
 .style-bold .rings b:nth-child(3){opacity:.18}
@@ -51,17 +51,21 @@
 .style-editorial .slide-bottom{letter-spacing:.2cqw}
 
 /* 网格分割 Bento */
-.style-sample-bento{display:grid;grid-template:1fr 1fr/1.5fr 1fr;gap:0;padding:0}
-.style-sample-bento b{position:static;width:auto;height:auto;border:1px solid #315ee9;opacity:.6;margin:-.5px}
-.style-sample-bento b:last-child{background:#315ee9;opacity:.9}
+.style-sample-bento{display:block}
+.style-sample-bento b:first-child{left:8%;top:14%;width:48%;height:72%;border:1px solid #315ee9;opacity:.6}
+.style-sample-bento b:last-child{right:8%;top:14%;width:26%;height:34%;background:#315ee9;opacity:.9}
 .style-bento{--line:color-mix(in srgb,var(--ink) 55%,transparent)}
-.style-bento .rings{transform:none;right:6%;top:15%;width:38%;height:62%;display:grid;grid-template:1fr 1fr/1.5fr 1fr;gap:0}
-.style-bento .rings b{position:static;width:auto;height:auto;border:1px solid var(--line);border-radius:0;opacity:.75;margin:-.5px}
-.style-bento .rings b:nth-child(2){opacity:.45}
-.style-bento .rings b:nth-child(3){background:var(--ink);opacity:.9;border-color:var(--ink)}
+.style-bento::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(var(--line),var(--line)) 0 11.5%/100% 1px no-repeat,linear-gradient(var(--line),var(--line)) 0 88.5%/100% 1px no-repeat}
+.style-bento.slide-0::before,.style-bento.slide-4::before{background:linear-gradient(var(--line),var(--line)) 0 11.5%/100% 1px no-repeat,linear-gradient(var(--line),var(--line)) 0 88.5%/100% 1px no-repeat,linear-gradient(var(--line),var(--line)) 64% 0/1px 100% no-repeat,linear-gradient(var(--line),var(--line)) 64% 50%/36% 1px no-repeat}
+.style-bento .slide-top{top:4.5%}
+.style-bento .slide-bottom{border-top:0;bottom:4%}
+.style-bento .rings{transform:none;right:3%;top:53%;width:30%;height:32%}
+.style-bento .rings b{display:none}
+.style-bento .rings b:nth-child(3){display:block;position:absolute;inset:0;width:auto;height:auto;border:0;border-radius:0;background:var(--ink);opacity:1}
+.style-bento .cover-copy{top:24%}
 .style-bento .cover-copy h2{font-weight:700;letter-spacing:-.05cqw}
 .style-bento .eyebrow{font-size:.8cqw;letter-spacing:.3cqw;opacity:.75}
-.style-bento .slide-bottom{border-top:1px solid var(--line);opacity:.8}
+.style-bento .slide-bottom{opacity:.8}
 .style-bento .chapter strong{display:inline-block;border:1px solid var(--line);padding:1.2cqw 2.4cqw;font-size:5.5cqw;font-weight:600}
 .style-bento .chapter h2,.style-bento .content-slide h2{font-weight:650}
 .style-bento .columns{gap:0;margin-top:4cqw}

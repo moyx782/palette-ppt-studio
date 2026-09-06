@@ -4,10 +4,10 @@
 
 ## 当前项目直接使用
 
-需要 Node.js 22.13+，首次在项目目录运行 `npm install`。当前工作区已安装依赖。
+需要 Node.js 22.13+，首次在项目目录运行 `npm install`。
 
 ```bash
-cd /home/sfwh/Desktop/ppt/palette-studio
+cd palette-studio
 node cli/palette-ppt.mjs example &gt; palette.json
 node cli/palette-ppt.mjs validate --config palette.json
 node cli/palette-ppt.mjs generate --config palette.json --output my-template.pptx
@@ -36,7 +36,7 @@ node cli/palette-ppt.mjs generate --config palette.json --output my-template.ppt
 ## MCP（本地 stdio）
 
 ```bash
-codex mcp add palette-ppt -- node /home/sfwh/Desktop/ppt/palette-studio/cli/mcp.mjs
+codex mcp add palette-ppt -- node /absolute/path/to/palette-studio/cli/mcp.mjs
 ```
 
 通用支持 stdio 的客户端配置（路径改为实际安装目录）：
@@ -46,7 +46,7 @@ codex mcp add palette-ppt -- node /home/sfwh/Desktop/ppt/palette-studio/cli/mcp.
   &quot;mcpServers&quot;: {
     &quot;palette-ppt&quot;: {
       &quot;command&quot;: &quot;node&quot;,
-      &quot;args&quot;: [&quot;/home/sfwh/Desktop/ppt/palette-studio/cli/mcp.mjs&quot;]
+      &quot;args&quot;: [&quot;/absolute/path/to/palette-studio/cli/mcp.mjs&quot;]
     }
   }
 }
@@ -59,14 +59,14 @@ MCP 使用官方 SDK 的 [stdio transport](https://ts.sdk.modelcontextprotocol.i
 ## 安装为 Codex 技能
 
 ```bash
-node /home/sfwh/Desktop/ppt/palette-studio/cli/palette-ppt.mjs install-skill
+node /absolute/path/to/palette-studio/cli/palette-ppt.mjs install-skill
 ```
 
 默认安装到 `$CODEX_HOME/skills/palette-ppt`，未设置 CODEX_HOME 时为 `~/.codex/skills/palette-ppt`。已有目录不覆盖；也可用 `--dir /目标目录/palette-ppt` 指定位置。安装器记录当前项目位置，不复制 node_modules，因此需保留项目目录及依赖。移动项目后重新安装。重新打开 Codex 后可使用：
 
 &gt; $palette-ppt 使用这份 JSON 生成 PPT 模板，保存到指定目录。
 
-本次只提供安装器，没有修改用户的 MCP 配置或技能目录。技能格式参考 [官方技能文档](https://developers.openai.com/codex/skills)。
+安装命令需要由使用者执行。技能格式参考 [官方技能文档](https://developers.openai.com/codex/skills)。
 
 ## 可移植工具包
 
